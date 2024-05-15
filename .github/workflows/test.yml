@@ -10,7 +10,7 @@ jobs:
       oracle:
         image: jaspeen/oracle-xe-11g
         env:
-          ORACLE_USERNAME: oracle
+          ORACLE_USERNAME: system
           ORACLE_DATABASE: ex
           ORACLE_PASSWORD: oracle
         ports:
