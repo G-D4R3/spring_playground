@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class PlaygroundApplication {
 
 	public static void main(String[] args) {
+		System.out.println("git action test");
 		SpringApplication.run(PlaygroundApplication.class, args);
 	}
 
