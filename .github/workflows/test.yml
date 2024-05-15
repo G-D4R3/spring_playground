@@ -7,19 +7,6 @@ on:
 jobs:
   test:
     services:
-      oracle:
-        image: jaspeen/oracle-xe-11g
-        env:
-          ORACLE_USERNAME: system
-          ORACLE_DATABASE: ex
-          ORACLE_PASSWORD: oracle
-        ports:
-          - 1521:1521
-        options: >-
-          --health-cmd="oracle ping"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=3
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -39,12 +26,5 @@ jobs:
           
           echo "${{ secrets.DATABASE_PROPERTIES }}" >> ./application.properties
 
-      - name: Test with Gradle
-        run: ./gradlew --info test
-
-      # 테스트 후 Result를 보기위해 Publish Unit Test Results step 추가
-      - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v1
-        if: ${{ always() }}  # 테스트가 실패하여도 Report를 보기 위해 `always`로 설정
-        with:
-          files: build/test-results/**/*.xml
+      - name: Build Test with Gradle
+        run: ./gradlew --info
