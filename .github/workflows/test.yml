@@ -8,7 +8,7 @@ jobs:
   test:
     services:
       oracle:
-        image: wnameless/oracle-xe-11g
+        image: jaspeen/oracle-xe-11g
         env:
           ORACLE_USERNAME: oracle
           ORACLE_DATABASE: ex
